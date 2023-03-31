@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Mar 31 19:24:01 2023
+
+@author: yogevladani
+"""
+###################### Q1  ######################
+def my_func1 (x1,x2,x3):
+    if isinstance(x1,int) or isinstance( x2,int) or isinstance (x3,int):
+       print("Error: parameters should be float")
+    elif type(x1) !=float or type(x2) != float or type(x3) != float:
+        print('None')
+    elif (x1+x2+x3)==0:
+        print("Not a number – denominator equals zero")
+            
+    else:
+        denomiator=x1+x2+x3
+        numerator=(x1+x2+x3)*(x2+x3)*x3
+        numerator= denomiator*(x2+x3)*x3
+        print(float(numerator/denomiator))
+    
+my_func1(4.0,3.0, -7)
+
+###################### Q2  ######################
+
+
+def revword(word:str):
+    word=word.lower()[::-1]
+    return word
+print(revword("Hello"))
+###################### part 2  ######################
+def countword():
+    file= open("text.txt")
+    line_list=[]
+    for line in file:
+        line_list.append(line.rstrip().split()) 
+    dic={line_list[0][0]:1} 
+    for sentence in line_list[1:]:
+        for word in sentence:
+            dic[revword(word)]=dic.get(revword(word),0)+1
+    
+    return dic[line_list[0][0]]
+
+print(countword())
